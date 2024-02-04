@@ -11,6 +11,8 @@ version](https://www.r-pkg.org/badges/version/rrcovHD)](https://cran.r-project.o
 [![downloads](https://cranlogs.r-pkg.org/badges/rrcovHD)](https://cran.r-project.org/package=rrcovHD)
 [![downloads](https://cranlogs.r-pkg.org/badges/grand-total/rrcovHD)](https://cran.r-project.org/package=rrcovHD)
 [![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![Codecov test
+coverage](https://codecov.io/gh/valentint/rrcovHD/branch/master/graph/badge.svg)](https://app.codecov.io/gh/valentint/rrcovHD?branch=master)
 <!-- badges: end -->
 
 The package `rrcovHD` provides robust multivariate methods for high
