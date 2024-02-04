@@ -1,0 +1,265 @@
+
+R Under development (unstable) (2016-02-10 r70141) -- "Unsuffered Consequences"
+Copyright (C) 2016 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> ## VT::15.09.2013 - this will render the output independent
+> ##  from the version of the package
+> suppressPackageStartupMessages(library(rrcovHD))
+> 
+> data(iris)
+> 
+> ## New data for prediction consisting only of the first two classes
+> newx <- iris[iris$Species %in% c("setosa", "versicolor"), -5]
+> 
+> ## Qda and other classification methods will keep the levels of the grouping
+> ##  variable, even if the new data has not objects assigned to each class.
+> qq <- QdaClassic(Species~., data=iris)
+> qq
+Call:
+QdaClassic(Species ~ ., data = iris)
+
+Prior Probabilities of Groups:
+    setosa versicolor  virginica 
+ 0.3333333  0.3333333  0.3333333 
+
+Group means:
+           Sepal.Length Sepal.Width Petal.Length Petal.Width
+setosa            5.006       3.428        1.462       0.246
+versicolor        5.936       2.770        4.260       1.326
+virginica         6.588       2.974        5.552       2.026
+
+Group:  setosa 
+             Sepal.Length Sepal.Width Petal.Length Petal.Width
+Sepal.Length   0.12424898 0.099216327  0.016355102 0.010330612
+Sepal.Width    0.09921633 0.143689796  0.011697959 0.009297959
+Petal.Length   0.01635510 0.011697959  0.030159184 0.006069388
+Petal.Width    0.01033061 0.009297959  0.006069388 0.011106122
+
+Group:  versicolor 
+             Sepal.Length Sepal.Width Petal.Length Petal.Width
+Sepal.Length   0.26643265  0.08518367   0.18289796  0.05577959
+Sepal.Width    0.08518367  0.09846939   0.08265306  0.04120408
+Petal.Length   0.18289796  0.08265306   0.22081633  0.07310204
+Petal.Width    0.05577959  0.04120408   0.07310204  0.03910612
+
+Group:  virginica 
+             Sepal.Length Sepal.Width Petal.Length Petal.Width
+Sepal.Length   0.40434286  0.09376327   0.30328980  0.04909388
+Sepal.Width    0.09376327  0.10400408   0.07137959  0.04762857
+Petal.Length   0.30328980  0.07137959   0.30458776  0.04882449
+Petal.Width    0.04909388  0.04762857   0.04882449  0.07543265
+> pr <- predict(qq, newdata=newx)
+> pr
+  [1] setosa     setosa     setosa     setosa     setosa     setosa    
+  [7] setosa     setosa     setosa     setosa     setosa     setosa    
+ [13] setosa     setosa     setosa     setosa     setosa     setosa    
+ [19] setosa     setosa     setosa     setosa     setosa     setosa    
+ [25] setosa     setosa     setosa     setosa     setosa     setosa    
+ [31] setosa     setosa     setosa     setosa     setosa     setosa    
+ [37] setosa     setosa     setosa     setosa     setosa     setosa    
+ [43] setosa     setosa     setosa     setosa     setosa     setosa    
+ [49] setosa     setosa     versicolor versicolor versicolor versicolor
+ [55] versicolor versicolor versicolor versicolor versicolor versicolor
+ [61] versicolor versicolor versicolor versicolor versicolor versicolor
+ [67] versicolor versicolor versicolor versicolor virginica  versicolor
+ [73] versicolor versicolor versicolor versicolor versicolor versicolor
+ [79] versicolor versicolor versicolor versicolor versicolor virginica 
+ [85] versicolor versicolor versicolor versicolor versicolor versicolor
+ [91] versicolor versicolor versicolor versicolor versicolor versicolor
+ [97] versicolor versicolor versicolor versicolor
+Levels: setosa versicolor virginica
+> 
+> cs <- CSimca(Species~., data=iris, k=4)
+> cs
+Call:
+CSimca(Species ~ ., data = iris, k = 4)
+
+Prior Probabilities of Groups:
+    setosa versicolor  virginica 
+ 0.3333333  0.3333333  0.3333333 
+
+Pca objects for Groups:
+
+Call:
+PcaClassic(x = class, k = k[i], trace = trace)
+Importance of components:
+                          PC1    PC2     PC3     PC4
+Standard deviation     0.4863 0.1921 0.16370 0.09504
+Proportion of Variance 0.7647 0.1194 0.08666 0.02921
+Cumulative Proportion  0.7647 0.8841 0.97079 1.00000
+
+Call:
+PcaClassic(x = class, k = k[i], trace = trace)
+Importance of components:
+                          PC1    PC2     PC3     PC4
+Standard deviation     0.6985 0.2690 0.23404 0.09895
+Proportion of Variance 0.7808 0.1158 0.08767 0.01567
+Cumulative Proportion  0.7808 0.8967 0.98433 1.00000
+
+Call:
+PcaClassic(x = class, k = k[i], trace = trace)
+Importance of components:
+                          PC1    PC2     PC3     PC4
+Standard deviation     0.8338 0.3264 0.22868 0.18511
+Proportion of Variance 0.7826 0.1199 0.05887 0.03857
+Cumulative Proportion  0.7826 0.9026 0.96143 1.00000
+> pr1 <- predict(cs)
+> pr1
+                        
+Apparent error rate 0.02
+
+Classification table 
+            Predicted
+Actual       setosa versicolor virginica
+  setosa         50          0         0
+  versicolor      0         47         3
+  virginica       0          0        50
+
+Confusion matrix 
+            Predicted
+Actual       setosa versicolor virginica
+  setosa          1       0.00      0.00
+  versicolor      0       0.94      0.06
+  virginica       0       0.00      1.00
+> pr2 <- predict(cs, newdata=newx)
+> pr2
+  [1] setosa     setosa     setosa     setosa     setosa     setosa    
+  [7] setosa     setosa     setosa     setosa     setosa     setosa    
+ [13] setosa     setosa     setosa     setosa     setosa     setosa    
+ [19] setosa     setosa     setosa     setosa     setosa     setosa    
+ [25] setosa     setosa     setosa     setosa     setosa     setosa    
+ [31] setosa     setosa     setosa     setosa     setosa     setosa    
+ [37] setosa     setosa     setosa     setosa     setosa     setosa    
+ [43] setosa     setosa     setosa     setosa     setosa     setosa    
+ [49] setosa     setosa     versicolor versicolor versicolor versicolor
+ [55] versicolor versicolor versicolor versicolor versicolor versicolor
+ [61] versicolor versicolor versicolor versicolor versicolor versicolor
+ [67] versicolor versicolor versicolor versicolor virginica  versicolor
+ [73] virginica  versicolor versicolor versicolor versicolor versicolor
+ [79] versicolor versicolor versicolor versicolor versicolor virginica 
+ [85] versicolor versicolor versicolor versicolor versicolor versicolor
+ [91] versicolor versicolor versicolor versicolor versicolor versicolor
+ [97] versicolor versicolor versicolor versicolor
+Levels: setosa versicolor virginica
+> 
+> ## Prediction when in the new data there are missing values
+> data(fish)
+> newfish <- na.omit(fish[fish$Species %in% c(1, 3, 7), -7])
+> cs <- CSimca(Species~., data=fish, k=6, kmax=6)
+Warning message:
+In PcaClassic.default(class, k[i], trace = trace) :
+  The number of principal components k = 6 is larger then kmax = 5; k is set to 5.
+> cs
+Call:
+CSimca(Species ~ ., data = fish, k = 6, kmax = 6)
+
+Prior Probabilities of Groups:
+         1          2          3          4          5          6          7 
+0.21518987 0.03797468 0.12658228 0.06962025 0.08860759 0.10759494 0.35443038 
+
+Pca objects for Groups:
+
+Call:
+PcaClassic(x = class, k = k[i], trace = trace)
+Importance of components:
+                            PC1    PC2     PC3     PC4    PC5    PC6
+Standard deviation     206.7108 2.1181 1.03749 0.65912 0.1931 0.1395
+Proportion of Variance   0.9999 0.0001 0.00003 0.00001 0.0000 0.0000
+Cumulative Proportion    0.9999 1.0000 0.99999 1.00000 1.0000 1.0000
+
+Call:
+PcaClassic(x = class, k = k[i], trace = trace)
+Importance of components:
+                            PC1     PC2     PC3    PC4    PC5
+Standard deviation     309.7639 2.23272 0.78462 0.2528 0.0237
+Proportion of Variance   0.9999 0.00005 0.00001 0.0000 0.0000
+Cumulative Proportion    0.9999 0.99999 1.00000 1.0000 1.0000
+
+Call:
+PcaClassic(x = class, k = k[i], trace = trace)
+Importance of components:
+                           PC1     PC2     PC3     PC4     PC5    PC6
+Standard deviation     89.0260 2.61030 1.42918 0.63618 0.22483 0.1233
+Proportion of Variance  0.9988 0.00086 0.00026 0.00005 0.00001 0.0000
+Cumulative Proportion   0.9988 0.99968 0.99994 0.99999 1.00000 1.0000
+
+Call:
+PcaClassic(x = class, k = k[i], trace = trace)
+Importance of components:
+                           PC1     PC2     PC3     PC4     PC5     PC6
+Standard deviation     78.9904 1.63113 1.26801 0.38524 0.02806 0.01246
+Proportion of Variance  0.9993 0.00043 0.00026 0.00002 0.00000 0.00000
+Cumulative Proportion   0.9993 0.99972 0.99998 1.00000 1.00000 1.00000
+
+Call:
+PcaClassic(x = class, k = k[i], trace = trace)
+Importance of components:
+                          PC1     PC2     PC3     PC4    PC5     PC6
+Standard deviation     4.8431 1.17956 0.76470 0.35814 0.1011 0.03840
+Proportion of Variance 0.9173 0.05441 0.02287 0.00502 0.0004 0.00006
+Cumulative Proportion  0.9173 0.97166 0.99453 0.99954 0.9999 1.00000
+
+Call:
+PcaClassic(x = class, k = k[i], trace = trace)
+Importance of components:
+                            PC1     PC2     PC3    PC4    PC5     PC6
+Standard deviation     494.4095 3.67480 1.11958 0.6163 0.1636 0.08203
+Proportion of Variance   0.9999 0.00006 0.00001 0.0000 0.0000 0.00000
+Cumulative Proportion    0.9999 0.99999 1.00000 1.0000 1.0000 1.00000
+
+Call:
+PcaClassic(x = class, k = k[i], trace = trace)
+Importance of components:
+                            PC1     PC2     PC3     PC4   PC5    PC6
+Standard deviation     347.9450 4.44883 1.62944 0.92128 0.214 0.1081
+Proportion of Variance   0.9998 0.00016 0.00002 0.00001 0.000 0.0000
+Cumulative Proportion    0.9998 0.99997 0.99999 1.00000 1.000 1.0000
+> pr1 <- predict(cs)
+> pr1
+                     
+Apparent error rate 0
+
+Classification table 
+      Predicted
+Actual  1  2  3  4  5  6  7
+     1 34  0  0  0  0  0  0
+     2  0  6  0  0  0  0  0
+     3  0  0 20  0  0  0  0
+     4  0  0  0 11  0  0  0
+     5  0  0  0  0 14  0  0
+     6  0  0  0  0  0 17  0
+     7  0  0  0  0  0  0 56
+
+Confusion matrix 
+      Predicted
+Actual 1 2 3 4 5 6 7
+     1 1 0 0 0 0 0 0
+     2 0 1 0 0 0 0 0
+     3 0 0 1 0 0 0 0
+     4 0 0 0 1 0 0 0
+     5 0 0 0 0 1 0 0
+     6 0 0 0 0 0 1 0
+     7 0 0 0 0 0 0 1
+> pr2 <- predict(cs, newdata=newfish)
+> pr2
+  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3
+ [38] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+ [75] 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+Levels: 1 2 3 4 5 6 7
+> 
+> proc.time()
+   user  system elapsed 
+   0.70    0.03    0.73 

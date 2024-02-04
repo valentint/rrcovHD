@@ -1,0 +1,76 @@
+2024-02-04  Valentin Todorov  <valentin.todorov@chello.at>
+    *
+    * DESCRIPTION (Version): 0.3-0
+    *
+    * Replace \url{} by \doi{} for JSS - see the mail of Achim Zeileis from 6.10.2021
+    * License: GPL (>=3)
+    * Data set Cars moved to rrcov
+    * man/rcpp_hello_world.Rd removed, see mail from Kurt Hornik from 18.08.2023
+    *
+    
+2021-04-21  Valentin Todorov  <valentin.todorov@chello.at>
+    *
+    * DESCRIPTION (Version): 0.2-7
+    *
+    
+2019-11-10  Valentin Todorov  <valentin.todorov@chello.at>
+    *
+    * DESCRIPTION (Version): 0.2-6
+    *
+    * In this version I only simulate using Rcpp, in order to fix the issue in
+    *   robustHD, which does not load properly Rcpp and the check of rrcovHD
+    *   fails. I hope this trick will help. I only added a dummy cpp function
+    *   rcpp_hello_world() which serves as an example how to use Rcpp.
+
+2016-10-10  Valentin Todorov  <valentin.todorov@chello.at>
+    *
+    * DESCRIPTION (Version): 0.2-5
+    *
+    * Fixed the exports in NAMESPACE (previously everything was exported)
+    *
+    * Added functions and classes for Robust and sparse multigroup classification
+    *   by the optimal scoring approach: SosDisc, SosDiscClass, SosDiscRobust,
+    *   SummarySosDisc and PredictSosDisc.
+    *
+    *
+
+2016-02-12  Valentin Todorov  <valentin.todorov@chello.at>
+    *
+    * DESCRIPTION (Version): 0.2-4
+    *
+    * Fixed a bug related to an update of rrcov
+    *
+    * Fixed a bug in OutlierPCDist() - now any robust estimator
+    *   can be used, not only CovSest.
+    *
+2014-12-02  Valentin Todorov  <valentin.todorov@chello.at>
+    *
+    * DESCRIPTION (Version): 0.2-3
+    *
+    * Fixed compatibility issues with robustbase and rrcov versions (imports)
+    *
+    * Use suppressPackageStartupMessages(library(rrcov)) in the tests
+    * R/SPcaGrid.R - Fixed a bug: wrong call to rrcov::pca.distances()
+    *
+
+2013-09-01  Valentin Todorov  <valentin.todorov@chello.at>
+    * 0.2-02
+    * Warnings fixed - see mail from Prof. Ripley from 9.August 2013
+    *
+
+2013-03-31  Valentin Todorov  <valentin.todorov@chello.at>
+    * 0.2-01
+    * Minor problems with imports fixed
+    * Fixed a problem in predict{Simca} - the levels
+    *   of the grouping variable are now kept
+    * Tests added: Simca and Outlier
+
+2012-07-24  Valentin Todorov  <valentin.todorov@chello.at>
+    * 0.2-00
+    * Documentation added
+    * SIMCA classes added
+    * Added classes for outlier detection
+    * Added class SPcaGrid
+    * Created
+
+
