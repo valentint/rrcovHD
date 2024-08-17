@@ -56,7 +56,8 @@ SPcaGrid.default <- function(x, k=0, kmax=ncol(x),  method = c ("mad", "sd", "qn
     ##
     ## verify and set the input parameters: k and kmax
     ##
-    kmax <- max(min(floor(kmax), rankMM(x)),1)
+    myrank <- rankMM(x)
+    kmax <- max(min(floor(kmax), myrank),1)
     if(trace)
         cat("k=", k, ", kmax=", kmax, ".\n", sep="")
 
@@ -104,6 +105,7 @@ SPcaGrid.default <- function(x, k=0, kmax=ncol(x),  method = c ("mad", "sd", "qn
     ## fix up call to refer to the generic, but leave arg name as `formula'
     cl[[1]] <- as.name("SPcaGrid")
     res <- new("SPcaGrid", call=cl,
+                            rank=myrank,
                             loadings=loadings,
                             eigenvalues=eigenvalues,
                             center=center,

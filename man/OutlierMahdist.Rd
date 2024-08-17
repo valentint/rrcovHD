@@ -33,8 +33,8 @@ Outlier identification using robust (mahalanobis) distances based on robust mult
   \item{x}{a matrix or data frame. }
   \item{grouping}{grouping variable:  a factor specifying the class for each observation.}
   \item{control}{ a control object (S4) for one of the available control classes,
-    e.g. \code{\link{CovControlMcd-class}}, \code{\link{CovControlOgk-class}},
-    \code{\link{CovControlSest-class}}, etc.,
+    e.g. \code{\link[rrcov]{CovControlMcd-class}}, \code{\link[rrcov]{CovControlOgk-class}},
+    \code{\link[rrcov]{CovControlSest-class}}, etc.,
     containing estimation options. The class of this object defines
     which estimator will be used. Alternatively a character string can be specified
     which names the estimator - one of auto, sde, mcd, ogk, m, mve, sfast, surreal,
@@ -56,7 +56,7 @@ Outlier identification using robust (mahalanobis) distances based on robust mult
     new control object will be created and used (with default estimation options).
     If this argument is missing or a character string
     'auto' is specified, the function will select the robust estimator
-    according to the size of the dataset - for details see \code{\link{CovRobust}}.
+    according to the size of the dataset - for details see \code{\link[rrcov]{CovRobust}}.
 }
 \value{
   An S4 object of class \code{\linkS4class{OutlierMahdist}} which 

@@ -1,8 +1,7 @@
 Package: rrcovHD
-Date: 2024-02-01
 Title: Robust Multivariate Methods for High Dimensional Data
-Version: 0.3-0
-VersionNote: Released 0.2-7 on 2021-04-23 on CRAN
+Version: 0.3-1
+VersionNote: Released 0.3-0 on 2024-02-04 on CRAN
 Authors@R: c(person("Valentin", "Todorov", role = c("aut", "cre"), email = "valentin.todorov@chello.at", comment=c(ORCID = "0000-0003-4215-0245")))
 Description: Robust multivariate methods for high dimensional data including
         outlier detection (Filzmoser and Todorov (2013) <doi:10.1016/j.ins.2012.10.017>), 

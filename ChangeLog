@@ -1,3 +1,10 @@
+2024-08-18  Valentin Todorov  <valentin.todorov@chello.at>
+    *
+    * DESCRIPTION (Version): 0.3-1
+    *
+    * man/*: Correct Rd file(s) with Rd \link{} targets missing package anchors
+    *
+    
 2024-02-04  Valentin Todorov  <valentin.todorov@chello.at>
     *
     * DESCRIPTION (Version): 0.3-0

@@ -28,9 +28,9 @@ Objects can be created by calls of the form \code{new("SPcaGrid", ...)} but the
   }
 }
 \section{Extends}{
-Class \code{"\linkS4class{PcaGrid}"}, directly.
-Class \code{"\linkS4class{PcaRobust}"}, by class "PcaGrid", distance 2.
-Class \code{"\linkS4class{Pca}"}, by class "PcaGrid", distance 3.
+Class \code{"\link[rrcov]{PcaGrid-class}"}, directly.
+Class \code{"\link[rrcov]{PcaRobust-class}"}, by class \code{"\link[rrcov]{PcaGrid-class}"}, distance 2.
+Class \code{"\link[rrcov]{Pca-class}"}, by class \code{"\link[rrcov]{PcaGrid-class}"}, distance 3.
 }
 \section{Methods}{
   \describe{
@@ -56,7 +56,9 @@ Class \code{"\linkS4class{Pca}"}, by class "PcaGrid", distance 3.
 }
 \author{ Valentin Todorov \email{valentin.todorov@chello.at} }
 \seealso{
-     \code{\link{SPcaGrid}}, \code{\link{PcaGrid-class}}, \code{\link{PcaRobust-class}}, \code{\link{Pca-class}}, \code{\link{PcaClassic}}, \code{\link{PcaClassic-class}}
+     \code{\link{SPcaGrid}}, \code{\link[rrcov]{PcaGrid-class}}, 
+     \code{\link[rrcov]{PcaRobust-class}}, \code{\link[rrcov]{Pca-class}}, 
+     \code{\link[rrcov]{PcaClassic}}, \code{\link[rrcov]{PcaClassic-class}}
 }
 \examples{
 showClass("SPcaGrid")

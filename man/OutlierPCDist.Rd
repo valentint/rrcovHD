@@ -35,8 +35,8 @@ Outlier identification in high dimensions using the PCDIST algorithm
     \item{grouping}{grouping variable:  a factor specifying the class for each observation.}
 
     \item{control}{ a control object (S4) for one of the available control classes,
-    e.g. \code{\link{CovControlMcd-class}}, \code{\link{CovControlOgk-class}},
-    \code{\link{CovControlSest-class}}, etc.,
+    e.g. \code{\link[rrcov]{CovControlMcd-class}}, \code{\link[rrcov]{CovControlOgk-class}},
+    \code{\link[rrcov]{CovControlSest-class}}, etc.,
     containing estimation options. The class of this object defines
     which estimator will be used. Alternatively a character string can be specified
     which names the estimator - one of auto, sde, mcd, ogk, m, mve, sfast, surreal,
